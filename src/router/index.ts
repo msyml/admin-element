@@ -1,7 +1,10 @@
 import { App } from 'vue';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import tools from './tools';
 
-const constantRouter: RouteRecordRaw[] = [];
+const constantRouter: RouteRecordRaw[] = [
+  ...tools,
+];
 
 const router = createRouter({
   history: createWebHistory(),
