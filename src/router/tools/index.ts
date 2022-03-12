@@ -8,6 +8,7 @@ const router: RouteRecordRaw[] = [
     meta: {
       label: 'Excel',
       isMenu: 'true',
+      menuName: '读取Excel'
     },
   },
 ];
