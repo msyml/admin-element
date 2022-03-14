@@ -1,12 +1,12 @@
 import { RouteRecordRaw } from 'vue-router';
-import ReadExcelToTable from '@/views/tools/ReadExcelToTable.vue';
+import Index from '@/views/test/Index.vue';
 
 const router: RouteRecordRaw[] = [
   {
-    path: '/readExcel',
-    component: ReadExcelToTable,
+    path: '/test',
+    component: Index,
     meta: {
-      label: 'Excel',
+      label: '测试奇奇怪怪的东西',
       isMenu: 'true',
     },
   },

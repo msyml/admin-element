@@ -1,8 +1,15 @@
 import { App } from 'vue';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import Layout from '@/layout/index.vue';
 import tools from './tools';
+import test from './test';
 
 const constantRouter: RouteRecordRaw[] = [
+  {
+    path: '',
+    component: Layout,
+  },
+  ...test,
   ...tools,
 ];
 

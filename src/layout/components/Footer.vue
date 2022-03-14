@@ -1,6 +1,6 @@
 <template>
     <div>
-        NavBar
+        Footer
     </div>
 </template>
 
@@ -15,6 +15,6 @@ onMounted(() => {
 
 <style scoped lang="less">
 div {
-    background-color: green;
+    background-color: blue;
 }
 </style>

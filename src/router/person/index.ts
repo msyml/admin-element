@@ -3,10 +3,10 @@ import ReadExcelToTable from '@/views/tools/ReadExcelToTable.vue';
 
 const router: RouteRecordRaw[] = [
   {
-    path: '/readExcel',
+    path: '/bill',
     component: ReadExcelToTable,
     meta: {
-      label: 'Excel',
+      label: '账单管理',
       isMenu: 'true',
     },
   },
