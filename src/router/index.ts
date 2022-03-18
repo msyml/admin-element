@@ -8,9 +8,11 @@ const constantRouter: RouteRecordRaw[] = [
   {
     path: '',
     component: Layout,
+    children: [
+      ...tools,
+    ],
   },
   ...test,
-  ...tools,
 ];
 
 const router = createRouter({
