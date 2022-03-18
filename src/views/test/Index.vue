@@ -1,157 +1,27 @@
 <template>
   <div>
     test
-    <table class="table">
+    {{ counterStore.count }}
+    {{ counterStore.doubleCount }}
+    <el-button @click="counterStore.add">++</el-button>
+    <!-- <table class="table">
       <tr v-for="item in dataList" :key="item.name">
         <td v-for="key in Object.keys(item)" :key="key">
           {{ item[key] }}
         </td>
       </tr>
-    </table>
+    </table> -->
   </div>
 </template>
 
 <script lang="ts" setup>
   import { onMounted, ref } from 'vue';
+  import { userStore } from '@/store/modules/index';
 
-  const dataList = ref([
-    {
-      name: '罗勇',
-      key: '1',
-      nameFocus: false,
-      test1: '测试文字测试文字测试文字',
-      test2: '测试文字测试文字测试文字',
-      test3: '测试文字测试文字测试文字',
-      test4: '测试文字测试文字测试文字',
-      test5: '测试文字测试文字测试文字',
-      test6: '测试文字测试文字测试文字',
-      test7: '测试文字测试文字测试文字',
-      test8: '测试文字测试文字测试文字',
-      test9: '测试文字测试文字测试文字',
-      test10: '测试文字测试文字测试文字',
-      test11: '测试文字测试文字测试文字',
-      test12: '测试文字测试文字测试文字',
-    },
-    {
-      name: '罗勇',
-      key: '1',
-      nameFocus: false,
-      test1: '测试文字测试文字测试文字',
-      test2: '测试文字测试文字测试文字',
-      test3: '测试文字测试文字测试文字',
-      test4: '测试文字测试文字测试文字',
-      test5: '测试文字测试文字测试文字',
-      test6: '测试文字测试文字测试文字',
-      test7: '测试文字测试文字测试文字',
-      test8: '测试文字测试文字测试文字',
-      test9: '测试文字测试文字测试文字',
-      test10: '测试文字测试文字测试文字',
-      test11: '测试文字测试文字测试文字',
-      test12: '测试文字测试文字测试文字',
-    },
-    {
-      name: '罗勇',
-      key: '1',
-      nameFocus: false,
-      test1: '测试文字测试文字测试文字',
-      test2: '测试文字测试文字测试文字',
-      test3: '测试文字测试文字测试文字',
-      test4: '测试文字测试文字测试文字',
-      test5: '测试文字测试文字测试文字',
-      test6: '测试文字测试文字测试文字',
-      test7: '测试文字测试文字测试文字',
-      test8: '测试文字测试文字测试文字',
-      test9: '测试文字测试文字测试文字',
-      test10: '测试文字测试文字测试文字',
-      test11: '测试文字测试文字测试文字',
-      test12: '测试文字测试文字测试文字',
-    },
-    {
-      name: '罗勇',
-      key: '1',
-      nameFocus: false,
-      test1: '测试文字测试文字测试文字',
-      test2: '测试文字测试文字测试文字',
-      test3: '测试文字测试文字测试文字',
-      test4: '测试文字测试文字测试文字',
-      test5: '测试文字测试文字测试文字',
-      test6: '测试文字测试文字测试文字',
-      test7: '测试文字测试文字测试文字',
-      test8: '测试文字测试文字测试文字',
-      test9: '测试文字测试文字测试文字',
-      test10: '测试文字测试文字测试文字',
-      test11: '测试文字测试文字测试文字',
-      test12: '测试文字测试文字测试文字',
-    },
-    {
-      name: '罗勇',
-      key: '1',
-      nameFocus: false,
-      test1: '测试文字测试文字测试文字',
-      test2: '测试文字测试文字测试文字',
-      test3: '测试文字测试文字测试文字',
-      test4: '测试文字测试文字测试文字',
-      test5: '测试文字测试文字测试文字',
-      test6: '测试文字测试文字测试文字',
-      test7: '测试文字测试文字测试文字',
-      test8: '测试文字测试文字测试文字',
-      test9: '测试文字测试文字测试文字',
-      test10: '测试文字测试文字测试文字',
-      test11: '测试文字测试文字测试文字',
-      test12: '测试文字测试文字测试文字',
-    },
-    {
-      name: '罗勇',
-      key: '1',
-      nameFocus: false,
-      test1: '测试文字测试文字测试文字',
-      test2: '测试文字测试文字测试文字',
-      test3: '测试文字测试文字测试文字',
-      test4: '测试文字测试文字测试文字',
-      test5: '测试文字测试文字测试文字',
-      test6: '测试文字测试文字测试文字',
-      test7: '测试文字测试文字测试文字',
-      test8: '测试文字测试文字测试文字',
-      test9: '测试文字测试文字测试文字',
-      test10: '测试文字测试文字测试文字',
-      test11: '测试文字测试文字测试文字',
-      test12: '测试文字测试文字测试文字',
-    },
-    {
-      name: '罗勇',
-      key: '1',
-      nameFocus: false,
-      test1: '测试文字测试文字测试文字',
-      test2: '测试文字测试文字测试文字',
-      test3: '测试文字测试文字测试文字',
-      test4: '测试文字测试文字测试文字',
-      test5: '测试文字测试文字测试文字',
-      test6: '测试文字测试文字测试文字',
-      test7: '测试文字测试文字测试文字',
-      test8: '测试文字测试文字测试文字',
-      test9: '测试文字测试文字测试文字',
-      test10: '测试文字测试文字测试文字',
-      test11: '测试文字测试文字测试文字',
-      test12: '测试文字测试文字测试文字',
-    },
-    {
-      name: '罗勇',
-      key: '1',
-      nameFocus: false,
-      test1: '测试文字测试文字测试文字',
-      test2: '测试文字测试文字测试文字',
-      test3: '测试文字测试文字测试文字',
-      test4: '测试文字测试文字测试文字',
-      test5: '测试文字测试文字测试文字',
-      test6: '测试文字测试文字测试文字',
-      test7: '测试文字测试文字测试文字',
-      test8: '测试文字测试文字测试文字',
-      test9: '测试文字测试文字测试文字',
-      test10: '测试文字测试文字测试文字',
-      test11: '测试文字测试文字测试文字',
-      test12: '测试文字测试文字测试文字',
-    },
-  ]);
+  const dataList = ref();
+
+  const counterStore = userStore()
+
 
   onMounted(() => {});
 </script>
