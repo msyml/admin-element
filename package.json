@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "Pinia": "^2.0.12",
+    "pinia": "^2.0.12",
     "axios": "^0.26.1",
     "dayjs": "^1.10.8",
     "element-plus": "^2.0.5",
