@@ -3,6 +3,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import Layout from '@/layout/index.vue';
 import tools from './tools';
 import test from './test';
+import charts from './charts';
 
 const constantRouter: RouteRecordRaw[] = [
   {
@@ -13,6 +14,7 @@ const constantRouter: RouteRecordRaw[] = [
     ],
   },
   ...test,
+  ...charts,
 ];
 
 const router = createRouter({
