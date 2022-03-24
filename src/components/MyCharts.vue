@@ -1,9 +1,9 @@
 <template>
-  <div ref="container" :style="{ height: props.height, width: props.width}"> </div>
+  <div ref="container" :style="{ height: props.height, width: props.width }"> </div>
 </template>
 
 <script lang="ts" setup>
-  import { onMounted, onUnmounted, ref } from 'vue';
+  import { onMounted, onUnmounted, ref, watch } from 'vue';
   // 引入 echarts 核心模块，核心模块提供了 echarts 使用必须要的接口。
   import * as echarts from 'echarts/core';
   // 根据要使用的图表按需引入
@@ -44,15 +44,15 @@
   const props = defineProps({
     width: {
       type: String,
-      default: '100%',
+      default: '600px',
     },
     height: {
       type: String,
-      default: '100%',
+      default: '400px',
     },
     autoResize: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     chartOption: {
       type: Object,
@@ -70,6 +70,7 @@
 
   // 创建
   onMounted(() => {
+    console.log('onMounted');
     initChart();
     if (props.autoResize) {
       window.addEventListener('resize', resizeHandler);
@@ -77,6 +78,7 @@
   });
   // 销毁
   onUnmounted(() => {
+    console.log('onUnmounted');
     if (!chart.value) {
       return;
     }
@@ -86,15 +88,25 @@
     chart.value.dispose();
     chart.value = null;
   });
+
+  watch(props.chartOption, (newValue, oldValue) => {
+    refresh();
+  });
+
   //   重绘
   const resizeHandler = () => {
-    container.value.resize();
+    if (container.value) {
+      container.value.resize();
+    }
   };
 
   const initChart = () => {
+    if (chart.value) {
+      chart.value.dispose();
+      chart.value = null;
+    }
     chart.value = echarts.init(container.value);
-    console.log('chart', chart.value);
-    chart.value.setOptions(props.chartOption);
+    chart.value.setOption(props.chartOption);
     chart.value.on('click', handleClick);
   };
 

@@ -1,12 +1,12 @@
 <template>
-  <div> 1111 <my-chart width="100%" height="100%" :chartOption="chartOption"></my-chart> </div>
+  <div> <my-chart :chart-option="chartOption"></my-chart> </div>
 </template>
 
 <script lang="ts" setup>
   import { onMounted, reactive, ref } from 'vue';
   import MyChart from '@/components/MyCharts.vue';
 
-  const chartOption = ref<any>();
+  const chartOption = ref<any>({});
 
   onMounted(() => {
     initChart();
