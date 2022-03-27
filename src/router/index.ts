@@ -4,6 +4,7 @@ import Layout from '@/layout/index.vue';
 import tools from './tools';
 import test from './test';
 import charts from './charts';
+import person from './person';
 
 const constantRouter: RouteRecordRaw[] = [
   {
@@ -15,6 +16,7 @@ const constantRouter: RouteRecordRaw[] = [
   },
   ...test,
   ...charts,
+  ...person,
 ];
 
 const router = createRouter({
